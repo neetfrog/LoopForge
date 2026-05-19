@@ -1,4 +1,4 @@
-# 🎬 LoopForge - 3D Seamless Loop Animation Generator
+# LoopForge
 
 **LoopForge** is a high-performance web application for creating seamless looping 3D animations with advanced visual effects. Built with React, Three.js, and featuring GPU-accelerated rendering for lightning-fast performance.
 
