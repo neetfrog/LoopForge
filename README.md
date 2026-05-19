@@ -2,6 +2,8 @@
 
 **LoopForge** is a high-performance web application for creating seamless looping 3D animations with advanced visual effects. Built with React, Three.js, and featuring GPU-accelerated rendering for lightning-fast performance.
 
+![LoopForge screenshot](public/screenshot.png)
+
 ## ✨ Features
 
 ### Core Capabilities
