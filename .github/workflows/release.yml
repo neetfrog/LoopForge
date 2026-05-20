@@ -1,0 +1,53 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build Electron app
+        run: npm run build:electron:win
+
+      - name: Get release info
+        id: release_info
+        run: |
+          $version = "${{ github.ref }}".Replace('refs/tags/v', '')
+          Write-Output "version=$version" >> $env:GITHUB_OUTPUT
+          $installer = Get-ChildItem -Path "dist_electron\*.exe" -Filter "*Setup*" | Select-Object -First 1
+          $portable = Get-ChildItem -Path "dist_electron\*.exe" -Filter "*-" | Where-Object {$_.Name -notmatch "Setup"} | Select-Object -First 1
+          if ($installer) { Write-Output "installer=$($installer.FullName)" >> $env:GITHUB_OUTPUT }
+          if ($portable) { Write-Output "portable=$($portable.FullName)" >> $env:GITHUB_OUTPUT }
+
+      - name: Create Release
+        uses: softprops/action-gh-release@v1
+        with:
+          files: |
+            dist_electron/LoopForge*Setup*.exe
+            dist_electron/LoopForge*.exe
+          body: |
+            # LoopForge v${{ steps.release_info.outputs.version }}
+            
+            ## Downloads
+            - **Installer (NSIS)** - Recommended for most users
+            - **Portable** - No installation required
+            
+            ## What's New
+            See commit history for changes.
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
