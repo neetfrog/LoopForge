@@ -3,6 +3,7 @@ productName: LoopForge
 directories:
   output: dist_electron
   buildResources: public
+publish: null
 files:
   - dist/**/*
   - electron-dist/**/*
