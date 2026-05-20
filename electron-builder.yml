@@ -5,6 +5,7 @@ directories:
   buildResources: public
 files:
   - dist/**/*
+  - dist_electron/*.cjs
   - node_modules/**/*
 win:
   target:
