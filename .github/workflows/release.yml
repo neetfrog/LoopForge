@@ -37,6 +37,7 @@ jobs:
       - name: Create Release
         uses: softprops/action-gh-release@v1
         with:
+          token: ${{ secrets.GITHUB_TOKEN }}
           files: |
             dist_electron/LoopForge*Setup*.exe
             dist_electron/LoopForge*.exe
@@ -50,4 +51,4 @@ jobs:
             ## What's New
             See commit history for changes.
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
