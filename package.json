@@ -5,9 +5,16 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
-    "preview": "vite preview"
+    "dev:electron": "concurrently \"npm run dev\" \"wait-on http://localhost:5173 && cross-env NODE_ENV=development electron .\"",
+    "build": "npm run build:main && vite build",
+    "build:main": "tsc -p tsconfig.main.json",
+    "build:electron": "npm run build && electron-builder",
+    "build:electron:win": "npm run build && electron-builder --win",
+    "build:electron:portable": "npm run build && electron-builder --win --portable",
+    "preview": "vite preview",
+    "dist": "npm run build:electron:win"
   },
+  "main": "dist_electron/main.cjs",
   "dependencies": {
     "@react-three/drei": "^10.7.7",
     "@react-three/fiber": "^9.5.0",
@@ -26,9 +33,15 @@
     "@types/react": "19.2.7",
     "@types/react-dom": "19.2.3",
     "@vitejs/plugin-react": "5.1.1",
+    "concurrently": "^9.1.0",
+    "cross-env": "^10.1.0",
+    "electron": "^33.0.0",
+    "electron-builder": "^25.0.0",
+    "electron-is-dev": "^3.0.1",
     "tailwindcss": "4.1.17",
     "typescript": "5.9.3",
     "vite": "7.2.4",
-    "vite-plugin-singlefile": "2.3.0"
+    "vite-plugin-singlefile": "2.3.0",
+    "wait-on": "^8.0.0"
   }
 }
