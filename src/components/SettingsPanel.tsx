@@ -15,6 +15,7 @@ import {
   Code2,
   Eye,
   EyeOff,
+  Github,
 } from 'lucide-react';
 import { useState } from 'react';
 
@@ -640,6 +641,30 @@ export function SettingsPanel({
             />
           </div>
         )}
+      </div>
+
+      {/* Footer with links */}
+      <div className="border-t border-white/5 p-3 flex items-center justify-center gap-3">
+        <a
+          href="https://github.com/neetfrog/LoopForge/releases"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="flex items-center gap-1.5 px-3 py-2 rounded-lg bg-white/5 hover:bg-white/10 text-white/60 hover:text-white text-xs transition-colors"
+          title="Download Windows Electron App"
+        >
+          <Github size={14} />
+          <span>Releases</span>
+        </a>
+        <a
+          href="https://github.com/neetfrog/LoopForge"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="flex items-center gap-1.5 px-3 py-2 rounded-lg bg-white/5 hover:bg-white/10 text-white/60 hover:text-white text-xs transition-colors"
+          title="View on GitHub"
+        >
+          <Code2 size={14} />
+          <span>GitHub</span>
+        </a>
       </div>
     </div>
   );
