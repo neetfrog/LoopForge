@@ -14,7 +14,7 @@
     "preview": "vite preview",
     "dist": "npm run build:electron:win"
   },
-  "main": "dist_electron/main.cjs",
+  "main": "electron-dist/main.js",
   "dependencies": {
     "@react-three/drei": "^10.7.7",
     "@react-three/fiber": "^9.5.0",

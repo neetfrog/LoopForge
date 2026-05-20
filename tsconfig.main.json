@@ -7,7 +7,7 @@
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
     "strict": true,
-    "outDir": "./dist_electron",
+    "outDir": "./electron-dist",
     "rootDir": "./src/main",
     "types": ["electron", "node"],
     "moduleResolution": "node",
