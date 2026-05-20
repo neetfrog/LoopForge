@@ -35,7 +35,7 @@ jobs:
           if ($portable) { Write-Output "portable=$($portable.FullName)" >> $env:GITHUB_OUTPUT }
 
       - name: Create Release
-        uses: softprops/action-gh-release@v1
+        uses: softprops/action-gh-release@v3
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           files: |
@@ -51,4 +51,4 @@ jobs:
             ## What's New
             See commit history for changes.
         env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
